@@ -14,6 +14,7 @@ public abstract class Shape {
     }
 
     public abstract String[] getParametersList();
+    public abstract BigDecimal[] getParameters();
     public abstract void load(BigDecimal[] parameters);
 
     public abstract BigDecimal getVolume();

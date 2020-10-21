@@ -20,6 +20,11 @@ public class Parallelepiped extends Shape {
     }
 
     @Override
+    public BigDecimal[] getParameters() {
+        return new BigDecimal[]{width, height, depth};
+    }
+
+    @Override
     public void load(BigDecimal[] parameters) throws IncorrectParametersException {
         if (parameters.length != 3) {
             throw new IncorrectParametersException();
