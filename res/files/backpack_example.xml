@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<backpack>
+    <capacity>10000.0</capacity>
+    <shapes>
+        <shape name="1" type="Ball">
+            <parameter name="Radius">10.0</parameter>
+        </shape>
+        <shape name="TestCube" type="Cube">
+            <parameter name="Side">10.0</parameter>
+        </shape>
+        <shape name="TestParallelepiped" type="Parallelepiped">
+            <parameter name="Width">2.0</parameter>
+            <parameter name="Height">3.0</parameter>
+            <parameter name="Depth">4.0</parameter>
+        </shape>
+    </shapes>
+</backpack>

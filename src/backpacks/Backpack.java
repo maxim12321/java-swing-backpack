@@ -1,6 +1,7 @@
 package backpacks;
 
-import com.sun.imageio.plugins.common.BogusColorSpace;
+import backpacks.exporters.BackpackExporter;
+import backpacks.exporters.XMLBackpackExporter;
 import exceptions.FullBackpackException;
 import shapes.*;
 
