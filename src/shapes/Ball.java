@@ -18,6 +18,11 @@ public class Ball extends Shape {
     }
 
     @Override
+    public BigDecimal[] getParameters() {
+        return new BigDecimal[]{radius};
+    }
+
+    @Override
     public void load(BigDecimal[] parameters) throws IncorrectParametersException {
         if (parameters.length != 1) {
             throw new IncorrectParametersException();

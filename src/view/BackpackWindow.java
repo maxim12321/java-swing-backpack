@@ -84,6 +84,8 @@ public class BackpackWindow extends JFrame {
         Container container = this.getContentPane();
         container.add(backpackPanel, BorderLayout.CENTER);
         container.add(buttonPanel, BorderLayout.EAST);
+
+        setJMenuBar(createMenuBar());
     }
 
     public void addShape(Shape shape, int index) {
@@ -132,5 +134,89 @@ public class BackpackWindow extends JFrame {
                         capacity.setScale(2, RoundingMode.FLOOR)
                         + ")"
         );
+    }
+
+    private JMenuBar createMenuBar() {
+        JMenuBar menuBar = new JMenuBar();
+
+        menuBar.add(createFileMenu());
+        menuBar.add(createHelpMenu());
+
+        return menuBar;
+    }
+
+    private JMenu createFileMenu() {
+        Font menuFont = new Font("Arial", Font.BOLD, 18);
+
+        JMenu fileMenu = new JMenu("File");
+        fileMenu.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JMenuItem openItem = new JMenuItem("Open");
+        openItem.setFont(menuFont);
+        openItem.setIcon(new ImageIcon("res/images/open_folder.png"));
+
+        JMenuItem xmlExportItem = new JMenuItem("Export as XML");
+        xmlExportItem.setFont(menuFont);
+
+        JMenu exportMenu = new JMenu("Export");
+        exportMenu.setFont(menuFont);
+        exportMenu.setIcon(new ImageIcon("res/images/save_file.png"));
+
+        JMenuItem exitItem = new JMenuItem("Exit");
+        exitItem.setFont(menuFont);
+
+        openItem.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.loadBackpack();
+            }
+        });
+        xmlExportItem.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.exportBackpackAsXML();
+            }
+        });
+        exitItem.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+            }
+        });
+
+        exportMenu.add(xmlExportItem);
+
+        fileMenu.add(openItem);
+        fileMenu.add(exportMenu);
+        fileMenu.addSeparator();
+        fileMenu.add(exitItem);
+
+        return fileMenu;
+    }
+
+    private JMenu createHelpMenu() {
+        Font menuFont = new Font("Arial", Font.BOLD, 18);
+
+        JMenu helpMenu = new JMenu("Help");
+        helpMenu.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JMenuItem openItem = new JMenuItem("About");
+        openItem.setFont(menuFont);
+        openItem.setIcon(new ImageIcon("res/images/about.png"));
+
+        openItem.addActionListener(new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null,
+                        "Here is some text about the program.\n" +
+                                "The latest version allows you to save\n" +
+                                "backpack as XML-file and load it back\n" +
+                                "(JSON requires some extra libraries :[ )",
+                        "About", JOptionPane.INFORMATION_MESSAGE);
+            }
+        });
+
+        helpMenu.add(openItem);
+        return helpMenu;
     }
 }
